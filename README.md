@@ -1,0 +1,2 @@
+# XShoppySharp
+XShoppySharp Library
