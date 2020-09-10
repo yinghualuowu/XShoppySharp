@@ -52,6 +52,8 @@
     <Compile Include="Entities\XShoppyObject.cs" />
     <Compile Include="Exception\XShoppySharpException.cs" />
     <Compile Include="Exception\XShoppySharpRateLimitException.cs" />
+    <Compile Include="Extends\FiltersDicExtends.cs" />
+    <Compile Include="Filters\XShoppyOrderFilters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\XShoppyOrderService.cs" />
     <Compile Include="XShoppySharpService.cs" />

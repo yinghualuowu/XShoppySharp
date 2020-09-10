@@ -39,10 +39,15 @@ namespace XShoppySharp.Entities
 
                 if (limitResult == false) return false;
 
-                var totalPage = totalCount / limit + totalCount % limit == 0 ? 0 : 1;
+                var pageInt = totalCount / limit;
 
-                return totalPage <= CurrentPage;
+                var pageMode = totalCount % limit == 0 ? 0 : 1;
+
+                var totalPage = pageInt + pageMode;
+
+                return totalPage > CurrentPage;
             }
+            
         }
     }
 }

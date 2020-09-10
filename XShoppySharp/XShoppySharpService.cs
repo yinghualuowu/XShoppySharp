@@ -37,10 +37,11 @@ namespace XShoppySharp
         /// 对外做出Get请求
         /// </summary>
         /// <param name="path">请求接口路由</param>
+        /// <param name="parameters">查询参数</param>
         /// <returns></returns>
-        protected async Task<T> GetExecuteRequest<T>(string path)
+        protected async Task<T> GetExecuteRequest<T>(string path,string parameters = "")
         {
-            var req = new Uri($"{OpenApi}{path}");
+            var req = new Uri($"{OpenApi}{path}{parameters}");
             return await ExecuteRequest<T>(req, HttpMethod.Get);
         }
 
