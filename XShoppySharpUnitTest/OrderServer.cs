@@ -1,6 +1,7 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
 using System.Threading.Tasks;
+using XShoppySharp.Entities.Order;
 using XShoppySharp.Exception;
 using XShoppySharp.Filters;
 using XShoppySharp.Service;
@@ -20,7 +21,7 @@ namespace XShoppySharpUnitTest
             {
                 var order = new XShoppyOrderService("1","2","3");
 
-                var resp = await order.GetOrderListAsync();
+                var resp = await order.GetOrderListAsync<XShoppyOrderListResp>();
             }
             catch (XShoppySharpException e)
             {
@@ -57,9 +58,9 @@ namespace XShoppySharpUnitTest
                 model.Password,
                 model.ShareSecret);
 
-            var resp = await order.GetOrderListAsync();
+            var resp = await order.GetOrderListAsync<XShoppyOrderListResp>();
 
-            Assert.False(resp.Data.Data == null);
+            Assert.False(resp.Data.DataList == null);
         }
 
         [Fact]
@@ -73,13 +74,15 @@ namespace XShoppySharpUnitTest
                 model.Password,
                 model.ShareSecret);
 
-            var resp = await order.GetOrderListAsync(new XShoppyOrderFilters
+            var filters = new XShoppyOrderFilters
             {
                 TimeStart = DateTime.Now.AddDays(-3),
                 TimeEnd = DateTime.Now
-            });
+            };
 
-            Assert.False(resp.Data.Data == null);
+            var resp = await order.GetOrderListAsync<XShoppyOrderListResp>(filters);
+
+            Assert.False(resp.Data.DataList == null);
 
             var current = resp.Data.CurrentPage;
             int.TryParse(resp.Data.TotalCount, out var totalCount);

@@ -3,7 +3,10 @@ using System;
 
 namespace XShoppySharp.Filters
 {
-    public class XShoppyOrderFilters
+    /// <summary>
+    /// 
+    /// </summary>
+    public class XShoppyOrderFilters: XShoppyBaseFilters
     {
         /// <summary>
         /// 创建时间 - 传递给平台会转为Unix时间戳

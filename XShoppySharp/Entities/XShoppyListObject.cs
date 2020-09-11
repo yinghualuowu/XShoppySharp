@@ -3,6 +3,10 @@ using Newtonsoft.Json;
 
 namespace XShoppySharp.Entities
 {
+    /// <summary>
+    /// 返回列表数据
+    /// </summary>
+    /// <typeparam name="T">列表中保存的实体</typeparam>
     public class XShoppyListObject<T>
     {
         /// <summary>
@@ -23,8 +27,11 @@ namespace XShoppySharp.Entities
         [JsonProperty("limit")]
         public string Limit { get; set; }
 
+        /// <summary>
+        /// 保存列表
+        /// </summary>
         [JsonProperty("data")]
-        public List<T> Data { get; set; }
+        public List<T> DataList { get; set; }
 
         /// <summary>
         /// 是否存在下一页

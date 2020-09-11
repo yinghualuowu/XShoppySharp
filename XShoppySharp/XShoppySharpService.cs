@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using XShoppySharp.Common;
 using XShoppySharp.Exception;
 
 namespace XShoppySharp
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public abstract class XShoppySharpService
     {
         /// <summary>

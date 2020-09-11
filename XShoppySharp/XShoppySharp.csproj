@@ -29,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\XShoppySharp.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -46,7 +47,8 @@
   <ItemGroup>
     <Compile Include="Common\XShoppyHttpClient.cs" />
     <Compile Include="Entities\Address\XShoppyAddress.cs" />
-    <Compile Include="Entities\Order\XShoppyOrder.cs" />
+    <Compile Include="Entities\Order\XShoppyOrderModel.cs" />
+    <Compile Include="Entities\Order\XShoppyOrderResp.cs" />
     <Compile Include="Entities\Product\XShoppyProduct.cs" />
     <Compile Include="Entities\XShoppyListObject.cs" />
     <Compile Include="Entities\XShoppyObject.cs" />
@@ -54,6 +56,7 @@
     <Compile Include="Exception\XShoppySharpRateLimitException.cs" />
     <Compile Include="Extends\FiltersDicExtends.cs" />
     <Compile Include="Filters\XShoppyOrderFilters.cs" />
+    <Compile Include="Filters\XShoppyBaseFilters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\XShoppyOrderService.cs" />
     <Compile Include="XShoppySharpService.cs" />
