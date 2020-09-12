@@ -26,7 +26,7 @@ namespace XShoppySharp.Service
         /// </summary>
         /// <param name="filters">订单查询参数</param>
         /// <returns></returns>
-        public async Task<XShoppyOrderListResp> GetOrderListAsync<T>(XShoppyOrderFilters filters = null)
+        public async Task<XShoppyOrderListResp> GetOrderListAsync(XShoppyOrderFilters filters = null)
         {
             var result = await GetExecuteRequest<XShoppyOrderListResp>("/order/orders/list?",filters.ToQueryParameters());
 

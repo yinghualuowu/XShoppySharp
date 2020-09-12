@@ -19,7 +19,7 @@ namespace XShoppySharp
 
         private readonly string _shareSecret;
 
-        private static XShoppyHttpClient Client { get; set; }
+        private XShoppyHttpClient Client { get; }
 
         private string OpenApi => "https://openapi.xshoppy.shop";
 

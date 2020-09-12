@@ -1,9 +1,4 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-using XShoppySharp.Entities.Address;
-using XShoppySharp.Entities.Product;
-
-namespace XShoppySharp.Entities.Order
+﻿namespace XShoppySharp.Entities.Order
 {
     /// <summary>
     /// 订单服务返回实体
