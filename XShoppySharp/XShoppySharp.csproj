@@ -49,6 +49,7 @@
     <Compile Include="Entities\Address\XShoppyAddress.cs" />
     <Compile Include="Entities\Order\XShoppyOrderModel.cs" />
     <Compile Include="Entities\Order\XShoppyOrderResp.cs" />
+    <Compile Include="Entities\Order\XShoppyOrderReq.cs" />
     <Compile Include="Entities\Product\XShoppyProduct.cs" />
     <Compile Include="Entities\XShoppyListObject.cs" />
     <Compile Include="Entities\XShoppyObject.cs" />

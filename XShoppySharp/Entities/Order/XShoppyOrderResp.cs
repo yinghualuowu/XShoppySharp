@@ -14,4 +14,9 @@
     ///  订单服务返回个数
     /// </summary>
     public class XShoppyOrderCountResp : XShoppyObject<XShoppyOrderCountData> { }
+
+    /// <summary>
+    ///  更新部分订单信息
+    /// </summary>
+    public class XShoppyOrderUpdateResp : XShoppyObject<string> { }
 }

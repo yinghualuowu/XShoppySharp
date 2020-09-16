@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
+using XShoppySharp.Entities.Order;
 using XShoppySharp.Exception;
 using XShoppySharp.Filters;
 using XShoppySharp.Service;
@@ -18,7 +19,15 @@ namespace XShoppySharpUnitTest
 
             try
             {
-                var order = new XShoppyOrderService("1","2","3");
+                string text = System.IO.File.ReadAllText(@"E:\资料\XShoppy\Shop.json");
+
+                var model = JsonConvert.DeserializeObject<XShoppyShop>(text);
+
+                model.Apikey = "1";
+
+                var order = new XShoppyOrderService(model.Apikey,
+                    model.Password,
+                    model.ShareSecret);
 
                 var resp = await order.GetOrderListAsync();
             }
@@ -89,6 +98,34 @@ namespace XShoppySharpUnitTest
             var result = totalCount > current;
 
             Assert.True(result == resp.Data.IsNextPage);
+        }
+
+        [Fact]
+        public async Task OrderUpdateService()
+        {
+            bool result = false;
+
+            try
+            {
+                string text = System.IO.File.ReadAllText(@"E:\资料\XShoppy\Shop.json");
+
+                var model = JsonConvert.DeserializeObject<XShoppyShop>(text);
+
+                var order = new XShoppyOrderService(model.Apikey,
+                    model.Password,
+                    model.ShareSecret);
+
+                var req = new XShoppyOrderReq
+                    { Id = "200909050655666", TrackingNumber = "LY451186937CN", FulfillmentStatus = "fulfilled" };
+
+                var orderUpdate = await order.UpdateOrderAsync(req);
+            }
+            catch (Exception e)
+            {
+                result = true;
+            }
+
+            Assert.False(result);
         }
     }
 }

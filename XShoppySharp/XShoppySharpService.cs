@@ -49,14 +49,28 @@ namespace XShoppySharp
         }
 
         /// <summary>
+        /// 对外做出Put请求
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="path"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        protected async Task<T> PutExecuteRequest<T>(string path, HttpContent content = null)
+        {
+            var req = new Uri($"{OpenApi}{path}");
+            return await ExecuteRequest<T>(req, HttpMethod.Put,content);
+        }
+
+        /// <summary>
         /// 对外做出请求
         /// </summary>
         /// <param name="uri">请求接口</param>
         /// <param name="method">请求方式</param>
+        /// <param name="content">请求数据实体</param>
         /// <returns>返回实体对象<see cref="T"/></returns>
-        private async Task<T> ExecuteRequest<T>(Uri uri,HttpMethod method)
+        private async Task<T> ExecuteRequest<T>(Uri uri,HttpMethod method,HttpContent content = null)
         {
-            using (var requestMessage = BuildHttpRequestMessage(uri,method))
+            using (var requestMessage = BuildHttpRequestMessage(uri,method,content))
             {
                 var response = await Client.SendAsync(requestMessage);
 
@@ -76,10 +90,16 @@ namespace XShoppySharp
         /// </summary>
         /// <param name="uri">请求接口</param>
         /// <param name="method">请求方式</param>
+        /// <param name="content">请求实体</param>
         /// <returns>返回一个<see cref="HttpRequestMessage"/></returns>
-        private HttpRequestMessage BuildHttpRequestMessage(Uri uri, HttpMethod method)
+        private HttpRequestMessage BuildHttpRequestMessage(Uri uri, HttpMethod method,HttpContent content = null)
         {
             var requestMessage = new HttpRequestMessage(method,uri);
+
+            if (content != null)
+            {
+                requestMessage.Content = content;
+            }
 
             if (!string.IsNullOrEmpty(_shareSecret))
             {

@@ -89,6 +89,5 @@ namespace XShoppySharp.Entities.Address
         /// </summary>
         [JsonProperty("tax_number")]
         public string TaxNumber { get; set; }
-
     }
 }
