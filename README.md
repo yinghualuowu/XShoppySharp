@@ -19,10 +19,15 @@
 GetOrderListAsync
 ```
 
+### 更新订单部分信息
+
+```cs
+UpdateOrderAsync
+```
 
 ## 开发记录
 
 - [X]  获取订单列表
 - [ ]  获取订单数量
-- [ ]  修改订单信息
+- [X]  修改订单信息
 
